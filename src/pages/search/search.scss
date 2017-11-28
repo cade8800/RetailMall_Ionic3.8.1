@@ -1,0 +1,80 @@
+page-search {
+  .searchbar-ios {
+    min-height: auto;
+  }
+  ion-header {
+    ion-navbar {
+      .toolbar-content {
+        height: 30px;
+        overflow: hidden;
+        border-radius: 3px;
+        .item {
+          font-size: inherit;
+          .input-wrapper {
+            height: 30px;
+          }
+          .icon {
+            font-size: 25px;
+            margin-top: -5px;
+            margin-right: 0px;
+          }
+        }
+      }
+    }
+  }
+  .content {
+    .btnList {
+      padding: 20px 8px;
+      .btn {
+        border: 1px solid #ECECEC;
+        color: #5A5A5A;
+        border-radius: 1px;
+        padding: 0 0.77em;
+      }
+    }
+  }
+  .list {
+    ion-thumbnail {
+      width: 80px;
+      height: 80px;
+      overflow: hidden;
+      position: relative;
+      -webkit-align-self: flex-start;
+      align-self: flex-start;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
+      -webkit-background-clip: padding-box!important;
+      background-clip: padding-box!important; // img {
+      //   width: auto;
+      //   height: auto;
+      //   position: absolute;
+      //   margin: auto;
+      //   top: 0;
+      //   bottom: 0;
+      //   left: 0;
+      //   right: 0;
+      // }
+    }
+    ion-label {
+      h2 {
+        white-space: initial;
+        font-size: 14px;
+        color: #101010;
+      }
+    }
+    .listPrice {
+      position: absolute;
+      right: 0.5rem;
+      bottom: 0px;
+      color: #FF8200;
+    }
+  }
+  .notmoredateload {
+    margin: 0px;
+    text-align: center;
+    padding: 0px;
+    color: #CBCBCB;
+    font-size: 12px;
+  }
+}

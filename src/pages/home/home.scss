@@ -1,0 +1,249 @@
+page-home {
+  .content {
+    .homeMain {
+      .toolbar-background {
+        background: none;
+      }
+      background-image: url('../assets/img/ui/homebg.png');
+      box-shadow: #A68FFD 0px 0px 30px 0;
+      background-size: cover;
+      .toolbar {
+        .tios.bar-buttons-md {
+          -webkit-box-ordinal-group: 4;
+          -webkit-order: 3;
+          -ms-flex-order: 3;
+          order: 3;
+          -webkit-transform: translateZ(0);
+          transform: translateZ(0);
+        }
+        .arrow-right-btn {
+          margin-right: 6px;
+          img {
+            height: 18px;
+          }
+        }
+        .downImg {
+          width: 1rem;
+          margin-left: 3px;
+        }
+        .meImg {
+          width: 55%;
+        }
+        .shareImg {
+          width: 20px;
+        }
+        .toolbar-content {
+          height: 30px;
+          overflow: hidden;
+          border-radius: 3px;
+          .item {
+            font-size: inherit;
+            .city-block {
+              position: relative;
+              bottom: 7px;
+              background: none;
+              padding-left: 0px;
+              margin-right: 8px;
+              box-shadow: none;
+            }
+            .input-wrapper {
+              height: 30px;
+            }
+            .icon {
+              font-size: 25px;
+              margin-top: -5px;
+              margin-right: 0px;
+            }
+          }
+        }
+      }
+      .fontsize14 {
+        font-size: 14px;
+      }
+      .fontsize12 {
+        font-size: 12px;
+      }
+      .bg71CDFF {
+        background-color: #71CDFF;
+      }
+      .bg1DC08C {
+        background-color: #1DC08C;
+      }
+      .agencyHomeInfo {
+        text-align: center;
+        color: #fff;
+        .avatar {
+          width: 85px;
+          height: 85px;
+          border-radius: 50%;
+          position: relative;
+          left: 50%;
+          margin-left: -42.5px;
+          overflow: hidden;
+          -webkit-align-self: flex-start;
+          align-self: flex-start;
+          background-size: cover;
+          background-repeat: no-repeat;
+          background-position: center center;
+          -webkit-background-clip: padding-box!important;
+          background-clip: padding-box!important;
+        }
+        .grid {
+          padding: 0px;
+          .col {
+            padding: 0px;
+            text-align: left;
+            .button {
+              font-size: 1rem;
+              height: 1.8em;
+              margin-bottom: 13px;
+              width: 45px;
+              float: right;
+              margin-top: -2px;
+            }
+            ion-icon {
+              padding-left: 10px;
+            }
+            span.centec {
+              display: inline-block;
+              word-break: keep-all;
+              white-space: nowrap;
+              width: 8rem;
+              overflow: hidden;
+              text-overflow: ellipsis;
+            }
+            .wechat {
+              background-image: url('../assets/img/ui/wechat.png');
+              background-repeat: no-repeat;
+              background-size: 16px;
+              padding-left: 25px;
+            }
+            .phone {
+              background-image: url('../assets/img/ui/phone.png');
+              background-repeat: no-repeat;
+              background-size: 12px;
+              padding-left: 20px;
+            }
+          }
+        }
+      }
+    }
+    .categoryLabel {
+      padding: 8px;
+      overflow: hidden;
+      .tabItem {
+        width: 60px;
+        text-align: center;
+        margin: 4px;
+        padding: 3px;
+        span {
+          font-size: 8px;
+          display: block;
+        }
+        img {
+          width: 35px;
+          height: 35px;
+          border-radius: 6px;
+        }
+      }
+    }
+    .contentRecommend {
+      background-color: #fff;
+      margin-bottom: 12px;
+      .list-header {
+        border-bottom-width: 0px;
+        .titleImg {
+          width: 70px;
+        }
+        .moreImg {
+          width: 90px;
+        }
+      }
+    }
+    .contentProduct {
+      background-color: #fff;
+      .list-header {
+        .titleImg {
+          width: 70px;
+        }
+        .moreImg {
+          width: 90px;
+        }
+      }
+      .list {
+        ion-thumbnail {
+          width: 80px;
+          height: 80px;
+          overflow: hidden;
+          position: relative;
+          -webkit-align-self: flex-start;
+          align-self: flex-start;
+          background-size: cover;
+          background-repeat: no-repeat;
+          background-position: center center;
+          -webkit-background-clip: padding-box!important;
+          background-clip: padding-box!important;
+        }
+        ion-label {
+          h2 {
+            white-space: initial;
+            font-size: 14px;
+            color: #101010;
+          }
+        }
+        .listPrice {
+          position: absolute;
+          right: 0.5rem;
+          bottom: 0px;
+          color: #FF8200;
+        }
+      }
+    }
+    .horizontalScrollList {
+      height: 178px;
+      background-color: #fff;
+      background-color: #fff;
+      white-space: nowrap;
+      .product {
+        display: inline-block;
+        width: 180px;
+        height: 155px;
+        margin: 5px;
+        overflow: hidden;
+        background-color: #F7F7F7;
+        .imgdiv {
+          border-radius: 4px;
+          width: 180px;
+          height: 105px;
+          overflow: hidden;
+          -webkit-align-self: flex-start;
+          align-self: flex-start;
+          background-size: cover;
+          background-repeat: no-repeat;
+          background-position: center center;
+          -webkit-background-clip: padding-box!important;
+          background-clip: padding-box!important;
+        }
+        p {
+          margin-top: 3px;
+          font-size: 13px;
+          color: #2F2F2F;
+          span {
+            font-size: 13px;
+            color: #EB4A7C;
+            font-weight: 500;
+            float: right;
+            margin-right: 10px;
+          }
+        }
+      }
+    }
+    .notmoredateload {
+      margin: 0px;
+      text-align: center;
+      padding: 0px;
+      color: #CBCBCB;
+      font-size: 12px;
+    }
+  }
+}

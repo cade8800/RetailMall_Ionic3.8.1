@@ -1,0 +1,137 @@
+// Ionic Variables and Theming. For more info, please see:
+// http://ionicframework.com/docs/v2/theming/
+
+// Font path is used to include ionicons,
+// roboto, and noto sans fonts
+$font-path: "../assets/fonts";
+
+
+// The app direction is used to include
+// rtl styles in your app. For more info, please see:
+// http://ionicframework.com/docs/theming/rtl-support/
+$app-direction: ltr;
+
+
+@import "ionic.globals";
+
+
+// Shared Variables
+// --------------------------------------------------
+// To customize the look and feel of this app, you can override
+// the Sass variables found in Ionic's source scss files.
+// To view all the possible Ionic variables, see:
+// http://ionicframework.com/docs/v2/theming/overriding-ionic-variables/
+
+
+
+
+// Named Color Variables
+// --------------------------------------------------
+// Named colors makes it easy to reuse colors on various components.
+// It's highly recommended to change the default colors
+// to match your app's branding. Ionic uses a Sass map of
+// colors so you can add, rename and remove colors as needed.
+// The "primary" color is the only required color in the map.
+
+$colors: (
+  primary:    #488aff,
+  secondary:  #1DC08C,
+  danger:     #f53d3d,
+  light:      #f4f4f4,
+  dark:       #222,
+  26C291:     #26C291,
+  1DC08C:     #1DC08C,
+  71CDFF:     #71CDFF,
+  FF8A00:     #FF8A00,
+  FFFFFF:     #FFFFFF,
+  D3D3D3:     #D3D3D3,
+  515151:     #515151,
+  CDCDCD:     #CDCDCD
+);
+
+
+/*公共loading样式*/
+.public-loading.loading-ios {
+  .loading-wrapper {
+    background-color: #fff;
+  }
+}
+
+/*日历天价格 黑色*/
+ion-calendar-month .secondary button.days-btn.dayclass small {
+  color: #000;
+}
+
+
+// App iOS Variables
+// --------------------------------------------------
+// iOS only Sass variables can go here
+
+
+
+
+// App Material Design Variables
+// --------------------------------------------------
+// Material Design only Sass variables can go here
+
+
+
+
+// App Windows Variables
+// --------------------------------------------------
+// Windows only Sass variables can go here
+
+
+
+
+// App Theme
+// --------------------------------------------------
+// Ionic apps can have different themes applied, which can
+// then be future customized. This import comes last
+// so that the above variables are used and Ionic's
+// default are overridden.
+
+@import "ionic.theme.default";
+.ion-page{
+  font-family: '微软雅黑';
+  .header {
+    span.button-inner {
+      font-size: 1.5rem;
+    }
+    .toolbar {
+      .bar-buttons-md[start] {
+        -webkit-box-ordinal-group: 4;
+        -webkit-order: 3;
+        -ms-flex-order: 3;
+        order: 3;
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+      }
+      .title {
+        .toolbar-title {
+          text-align: center;
+          color: #fff;
+          font-weight: 300;
+        }
+      }
+    }
+  }
+  .content {
+    background-color: #F6F6F6;
+  }
+}
+
+
+// Ionicons
+// --------------------------------------------------
+// The premium icon font for Ionic. For more info, please see:
+// http://ionicframework.com/docs/v2/ionicons/
+
+@import "ionic.ionicons";
+
+
+// Fonts
+// --------------------------------------------------
+
+@import "roboto";
+@import "noto-sans";

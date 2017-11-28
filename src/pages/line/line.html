@@ -1,0 +1,104 @@
+<ion-content>
+
+  <img src='assets/img/ui/fixgoback.png' class="mainBackBtn" (click)='navCtrl.pop()'>
+  <img src='assets/img/ui/share_detail.png' class="mainShareBtn" (click)="uutShare()">
+
+  <ion-slides pager="true" class="mainSlides">
+
+    <ion-slide *ngFor='let item of info.LineMainDto.Media.ImageInfoList' [ngStyle]="{'background-image':'url('+item.path+')'}">
+    </ion-slide>
+
+  </ion-slides>
+
+  <div class="mainContent">
+
+    <div class="mainTitle">
+      <span class="title">{{info.LineMainDto.ProductLineName}}</span>
+      <p>
+        <img class="setout" src="assets/img/ui/plane.png">出发地：{{info.LineMainDto.StrDepartures}}
+        <span class="price">￥{{info.LineMainDto.MiniRetailPrice|toFixed:2}}元起</span>
+      </p>
+      <p>
+        <img class="purpose" src="assets/img/ui/destination.png">目的地：{{info.LineMainDto.StrDestinations}}</p>
+    </div>
+
+    <div class="mainTabs">
+
+
+      <ion-segment [(ngModel)]="pet" color='26C291'>
+        <ion-segment-button value="product">
+          产品卖点
+        </ion-segment-button>
+        <ion-segment-button value="trip">
+          行程信息
+        </ion-segment-button>
+        <ion-segment-button value="other">
+          其它信息
+        </ion-segment-button>
+      </ion-segment>
+      <div [ngSwitch]="pet" class="tabContent">
+        <div *ngSwitchCase="'product'" [innerHtml]='info.LineMainDto.ProductRecommend'>
+        </div>
+        <div *ngSwitchCase="'trip'">
+
+          <div *ngFor='let day of info.DayTripDto'>
+            <p>
+              <strong>第{{day.Day}}天</strong> {{day.DeparturePlace}}
+              <span *ngFor='let des of day.destinationList'>
+                <img [src]='des.way'> {{des.arrivals}}
+              </span>
+            </p>
+            <p [innerHtml]='day.DayTripDescription'></p>
+
+            <div *ngFor='let item of day.Items'>
+              <p>{{item.TripName}}</p>
+              <p>{{item.StartTime}}{{item.TripStyle}}{{item.OthersContent}}</p>
+              <p>{{item.TripDescription}}</p>
+              <p *ngFor='let img of item.ImageInfos'>
+                <img style="width: 100%;" [src]="img.path">
+              </p>
+            </div>
+          </div>
+
+        </div>
+        <div *ngSwitchCase="'other'">
+          <strong>费用包含</strong>
+          <p [innerHtml]='info.LineMainDto.PriceIncluded'></p>
+          <strong>费用不含</strong>
+          <p [innerHtml]='info.LineMainDto.PriceExcluded'></p>
+          <strong>儿童说明</strong>
+          <p [innerHtml]='info.LineMainDto.PriceChildrenRemark'></p>
+          <strong>其他人群</strong>
+          <p [innerHtml]='info.LineMainDto.PriceOtherPeopleRemark'></p>
+          <strong>出团须知</strong>
+          <p [innerHtml]='info.LineMainDto.NoticeTeam'></p>
+          <strong>客人须知</strong>
+          <p [innerHtml]='info.LineMainDto.NoticeCustomer'></p>
+          <strong>旅游须知</strong>
+          <p [innerHtml]='info.LineMainDto.NoticeTour'></p>
+          <strong>签证说明</strong>
+          <p [innerHtml]='info.LineMainDto.VisaRemark'></p>
+          <strong>收客限制</strong>
+          <p [innerHtml]='info.LineMainDto.OtherReceiveLimit'></p>
+          <strong>其他说明</strong>
+          <p [innerHtml]='info.LineMainDto.OtherRemark'></p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</ion-content>
+
+
+<ion-footer class="mainFooter">
+  <ion-grid>
+    <ion-row>
+      <a [href]="agencyTel" ion-button full col-5 class="col" color='FFFFFF'>
+        <img src="assets/img/ui/call.png"> 电话联系
+      </a>
+      <button ion-button full class="col" color='1DC08C' (click)='booking()'>在线预订</button>
+    </ion-row>
+  </ion-grid>
+</ion-footer>

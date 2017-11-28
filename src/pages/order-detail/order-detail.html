@@ -1,0 +1,198 @@
+<ion-header>
+
+  <ion-toolbar color="1DC08C">
+    <ion-buttons start>
+      <button ion-button icon-only (click)='backProductDetail()'>
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>订单详情</ion-title>
+  </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <div class="productInfo" *ngFor='let item of order.ProductList' (click)='goProductDetail(item.ProductType?item.ProductType:order.OrderType,item.ProductId)'>
+    <div class="top">
+      <div class="imgdiv" [ngStyle]="{'background-image':'url('+item.CoverImageUrl+')'}">
+      </div>
+      {{item.ProductName}}
+      <img src="assets/img/ui/right.png" class="rightimg">
+    </div>
+  </div>
+
+  <div class="orderitem">
+    <div class="top">
+      <span class="title">编号：</span>{{order.OrderID}}
+    </div>
+    <div class="bottom">
+      <ion-grid>
+        <ion-row>
+          <ion-col *ngIf='order.OrderType==2'>出发时间</ion-col>
+          <ion-col *ngIf='order.OrderType==8'>入住时间</ion-col>
+          <ion-col *ngIf='order.OrderType==4'>入园时间</ion-col>
+          <ion-col class="title" col-8>{{order.MinDepartureTime|date:'yyyy-MM-dd'}}</ion-col>
+        </ion-row>
+        <ion-row *ngIf='order.OrderType!=4'>
+          <ion-col *ngIf='order.OrderType==2'>回团时间</ion-col>
+          <ion-col *ngIf='order.OrderType==8'>退房时间</ion-col>
+          <ion-col *ngIf='order.OrderType==4'></ion-col>
+          <ion-col class="title" col-8>{{order.MaxDepartureTime|date:'yyyy-MM-dd'}}</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>出游人数</ion-col>
+          <ion-col col-8>
+            <span *ngFor='let vg of order.VisitorTypeGroupList'>
+              <span class="title">{{vg.NumTotal}}/</span>{{vg.VisitorType|visitorType}}
+            </span>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>订单状态</ion-col>
+          <ion-col [ngClass]="order.PaymentState?'state2CC493':'stateEB4579'" col-8>{{order.PaymentState|paymentState}}</ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+
+  <div class="orderitem">
+    <div class="top">
+      <span class="title">成交金额：</span>
+      <span class="price">￥{{order.DealAmount|toFixed:2}}元</span>
+    </div>
+    <div class="bottom" *ngFor='let p of order.ProductList'>
+      <ion-grid *ngFor='let d of p.DateList'>
+        <ion-row *ngFor='let q of d.QuoteList'>
+          <ion-col col-auto *ngIf='order.OrderType==8'>{{d.Date|date:'yyyy-MM-dd'}}</ion-col>
+          <ion-col col-auto>{{q.QuoteName}}</ion-col>
+          <ion-col class="title" col-auto>{{q.Quantity}}</ion-col>
+          <ion-col class="stateEB4579">
+            {{q.Quote}}×{{q.Quantity}}=￥{{q.Quote*q.Quantity|toFixed:2}}
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+
+  <ion-list class="vistor">
+    <ion-list-header>
+      游客信息
+    </ion-list-header>
+    <ion-item *ngFor='let vis of order.VisitorList'>
+      <ion-avatar item-start>
+        <img src="assets/img/ui/vistorinfo.png">
+      </ion-avatar>
+      <h2>{{vis.VisitorName}}</h2>
+      <p>
+        <span>{{vis.CredentialTypeCn}}</span>{{vis.CredentialNumber}}</p>
+      <p>
+        <span>手机号</span>{{vis.VisitorPhone}}</p>
+      <ion-note item-end>{{vis.VisitorType|visitorType}}</ion-note>
+    </ion-item>
+  </ion-list>
+
+  <div class="orderitem" *ngIf='order.Invoice.IsActive'>
+    <div class="top">
+      <span class="title">发票信息</span>
+    </div>
+    <div class="bottom">
+      <ion-grid class="fromcol">
+        <ion-row>
+          <ion-col col-4>发票种类：</ion-col>
+          <ion-col class="title">{{order.Invoice.Type==1?'普通发票':'专用发票'}}</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-4>{{order.Invoice.Subject==1?'个人':'公司'}}：</ion-col>
+          <ion-col class="title">{{order.Invoice.Title}}</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-4>纳税人识别号：</ion-col>
+          <ion-col class="title">{{order.Invoice.TaxpayerId}}</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-4>地址：</ion-col>
+          <ion-col class="title">{{order.Invoice.Address}}</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-4>电话：</ion-col>
+          <ion-col class="title">{{order.Invoice.PhoneNumber}}</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-4>开户行：</ion-col>
+          <ion-col class="title">{{order.Invoice.BankName}}</ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+
+  <div class="orderitem" *ngIf='order.Shipping.IsActive'>
+    <div class="top">
+      <span class="title">配送信息</span>
+    </div>
+    <div class="bottom">
+      <ion-grid class="fromcol">
+        <ion-row>
+          <ion-col col-3>收件人：</ion-col>
+          <ion-col class="title">{{order.Shipping.ReceiverName}}</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-3>联系电话：</ion-col>
+          <ion-col class="title">{{order.Shipping.PhoneNumber}}</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-3>地址：</ion-col>
+          <ion-col class="title">{{order.Shipping.Areas+order.Shipping.Street}}</ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+
+  <div class="orderitem" *ngIf='order.BuyerRemark'>
+    <div class="top">
+      <span class="title">订单备注</span>
+    </div>
+    <div class="bottom">
+      <p class="title text">{{order.BuyerRemark}}</p>
+    </div>
+  </div>
+
+</ion-content>
+
+<ion-footer class="mainFooter">
+  <ion-grid>
+
+    <!-- <ion-row>
+      <a [href]="'tel:'+order.SellerUserPhone" ion-button full col-4 class="col" color='FFFFFF'>
+        <img src="assets/img/ui/call.png"> 电话联系
+      </a>
+      <button ion-button full class="col" color='FF8A00' (click)='orderModify()'>修改订单</button>
+      <button *ngIf='order.PaymentState?false:true' ion-button full class="col" [color]="order.OrderState==5?'515151':'FF8A00'"
+        (click)='cancelBtnClick()'>{{order.OrderState==5?'已取消':'取消订单'}}</button>
+      <button *ngIf='order.OrderState==5?false:true' ion-button full class="col" [color]="order.PaymentState?'515151':'FF8A00'"
+        (click)='orderPayment()'>{{order.PaymentState?'已完成':'付款'}}</button>
+    </ion-row> -->
+
+    <ion-row>
+      <ion-col col-2 class="padding3 rightborder">
+        <a [href]="'tel:'+order.SellerUserPhone">
+          <img src="assets/img/ui/ordercontact.png">
+          <p>电话联系</p>
+        </a>
+      </ion-col>
+      <ion-col col-2 class="padding3 rightborder" *ngIf='order.PaymentState?false:true' (click)='orderModify()'>
+        <img src="assets/img/ui/editorder.png">
+        <p>修改订单</p>
+      </ion-col>
+      <ion-col col-2 class="padding3 rightborder" *ngIf='order.PaymentState?false:true' (click)='cancelBtnClick()'>
+        <img src="assets/img/ui/cancel.png">
+        <p>{{order.OrderState==5?'已取消':'取消订单'}}</p>
+      </ion-col>
+      <ion-col *ngIf='order.OrderState==5?false:true'>
+        <button ion-button full [color]="order.PaymentState?'515151':'FF8A00'" (click)='orderPayment()'>{{order.PaymentState?'已完成':'付款'}}</button>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+</ion-footer>

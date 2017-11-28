@@ -1,0 +1,24 @@
+counter-input {
+  width: 101px;
+  height: 25px;
+  overflow: hidden;
+  .add {
+    float: left;
+    font-size: 25px;
+  }
+  .input {
+    float: left;
+    width: 5rem;
+    input {
+      background-color: #1DC08C;
+      color: #fff;
+      margin: 4px;
+      border-radius: 4px;
+      text-align: center;
+    }
+  }
+  .min {
+    float: left;
+    font-size: 25px;
+  }
+}

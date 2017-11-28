@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar color="1DC08C">
+    <ion-title>配送信息</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)='addShipping()'>
+          添加
+        </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list>
+
+    <ion-item-sliding *ngFor='let item of shippingList'>
+      <button ion-item (click)='choiceShipping(item)'>
+          <p>{{item.ReceiverName}},{{item.PhoneNumber}}</p>
+          <p>{{item.Areas+item.Street}}</p>
+          <ion-note item-end></ion-note>
+        </button>
+      <ion-item-options>
+        <button ion-button color="secondary" (click)="editShipping(item)">编辑</button>
+        <button ion-button color="danger" (click)="deleteShipping(item)">删除</button>
+      </ion-item-options>
+    </ion-item-sliding>
+
+  </ion-list>
+
+</ion-content>

@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-navbar color="1DC08C">
+
+    <!-- <ion-searchbar placeholder='搜索商品' (ionInput)="ionInput($event)" [(ngModel)]='params.KeyWord' start></ion-searchbar> -->
+    <!-- <ion-input placeholder="搜索商品" (click)='getfocus()' [(ngModel)]='params.KeyWord' start> </ion-input>
+      <ion-icon name="ios-information-circle-outline"></ion-icon> -->
+
+    <ion-item>
+      <ion-input placeholder="搜索商品" (click)='getfocus()' [(ngModel)]='params.KeyWord' start></ion-input>
+      <ion-icon name="ios-search-outline" item-right color='CDCDCD'></ion-icon>
+    </ion-item>
+
+    <ion-buttons end>
+      <button ion-button icon-only (click)="ionInput()">
+        搜索
+      </button>
+    </ion-buttons>
+
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+
+  <div class="btnList" *ngIf='showcondition'>
+    <button ion-button small (click)="categorySearch('线路')" color='light' class="btn">线路</button>
+    <button ion-button small (click)="categorySearch('酒店')" color='light' class="btn">酒店</button>
+    <button ion-button small (click)="categorySearch('门票')" color='light' class="btn">门票</button>
+    <button ion-button small (click)="categorySearch('签证')" color='light' class="btn">签证</button>
+    <button ion-button small (click)="categorySearch('保险')" color='light' class="btn">保险</button>
+  </div>
+
+  <div *ngIf='!showcondition'>
+    <ion-list>
+      <ion-item *ngFor='let item of productList' (click)='goProductDetail(item.ProductType,item.ProductId)'>
+        <ion-thumbnail item-start [ngStyle]="{'background-image':'url('+item.CoverImage+')'}">
+        </ion-thumbnail>
+        <h2>{{item.ProductName|textOverflowEllipsis:[42]}}</h2>
+        <span ion-button clear item-end class="listPrice">￥{{item.MiniRetailPrice}}元起</span>
+      </ion-item>
+    </ion-list>
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="isLoad">
+      <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+    <p class="notmoredateload" *ngIf="!isLoad">没有更多数据了</p>
+  </div>
+
+</ion-content>

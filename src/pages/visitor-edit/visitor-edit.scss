@@ -1,0 +1,24 @@
+page-visitor-edit {
+  .content {
+    .item {
+      .input-wrapper {
+        .label {
+          color: #808080;
+          font-size: 14px;
+          width: 60px;
+        }
+        .input,
+        .datetime-text,
+        .select-text {
+          color: #555555;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+  .mainFooter {
+    .grid {
+      padding: 0px;
+    }
+  }
+}

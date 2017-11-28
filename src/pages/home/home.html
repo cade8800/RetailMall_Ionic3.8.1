@@ -1,0 +1,133 @@
+<ion-content>
+
+  <div class="homeMain">
+
+    <ion-toolbar>
+
+      <ion-buttons class="tios arrow-right-btn" start>
+        <button ion-button icon-only icon-right color='light' onclick="window.history.go(-1);">
+          <img src="assets/img/ui/arrow-left.png" class="">
+        </button>
+      </ion-buttons>
+
+      <ion-item>
+        <button item-left ion-button color='light' class="fontsize14 city-block">
+          广州
+          <img src="assets/img/ui/down-black.png" class="downImg">
+        </button>
+        <ion-input placeholder="搜索商品" (click)='searchBtnClick()' disabled></ion-input>
+        <ion-icon name="ios-search-outline" item-right color='CDCDCD'></ion-icon>
+      </ion-item>
+
+      <ion-buttons end>
+        <button ion-button icon-only color='light' (click)='goMyAccount()'>
+          <img src="assets/img/ui/me.png" class="meImg">
+        </button>
+        <button ion-button icon-only color='light' (click)='uutShareInit(agencyInfo.AgencyName, agencyInfo.AgencyImg);uutShare()'>
+          <img src="assets/img/ui/share_home.png" class="shareImg">
+        </button>
+      </ion-buttons>
+
+    </ion-toolbar>
+
+    <div class="agencyHomeInfo">
+      <div class="avatar" [ngStyle]="{'background-image':'url('+agencyInfo.AgencyImg+')'}">
+      </div>
+      <h6>{{agencyInfo.AgencyName}}</h6>
+      <p>{{agencyInfo.ChargerName}}</p>
+      <ion-grid class="fontsize12">
+        <ion-row>
+          <ion-col col-auto>
+            <ion-icon name="ios-chatbubbles-outline"></ion-icon>
+          </ion-col>
+          <ion-col>
+            <span class="centec">微信:{{agencyInfo.WeChat}}</span>
+          </ion-col>
+          <ion-col col-auto>
+            <button ion-button small color='71CDFF' id="copyWechatBtn">复制</button>
+          </ion-col>
+          <ion-col col-auto>
+            <ion-icon name="ios-call-outline"></ion-icon>
+          </ion-col>
+          <ion-col>
+            <span class="centec">{{agencyInfo.TelePhone}}</span>
+          </ion-col>
+          <ion-col col-auto>
+            <a [href]="'tel:'+agencyInfo.TelePhone" ion-button small color='1DC08C'>拨号</a>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+
+  </div>
+
+  <div class="categoryLabel">
+
+    <ion-grid>
+      <ion-row>
+        <ion-col class="tabItem" (click)="productCategoryBtnClick('线路')">
+          <img src="assets/img/ui/line.png">
+          <span>线路</span>
+        </ion-col>
+        <ion-col class="tabItem" (click)="productCategoryBtnClick('酒店')">
+          <img src="assets/img/ui/hotel.png">
+          <span>酒店</span>
+        </ion-col>
+        <ion-col class="tabItem" (click)="productCategoryBtnClick('门票')">
+          <img src="assets/img/ui/ticket.png">
+          <span>门票</span>
+        </ion-col>
+        <ion-col class="tabItem" (click)="productCategoryBtnClick('签证')">
+          <img src="assets/img/ui/visa.png">
+          <span>签证</span>
+        </ion-col>
+        <ion-col class="tabItem" (click)="productCategoryBtnClick('保险')">
+          <img src="assets/img/ui/insurance.png">
+          <span>保险</span>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </div>
+
+  <div class="contentRecommend" *ngIf='hotProductList.length>0'>
+
+    <ion-list-header>
+      <img src='assets/img/ui/recommend.png' class="titleImg" item-start>
+      <img src='assets/img/ui/more.png' class="moreImg" item-end (click)='recommendBtnClick()'>
+    </ion-list-header>
+
+    <ion-scroll scrollX="true" class="horizontalScrollList">
+      <div class="product" *ngFor='let item of hotProductList' (click)='goProductDetail(item.ProductType,item.ProductId)'>
+        <div class="imgdiv" [ngStyle]="{'background-image':'url('+item.CoverImage+')'}">
+        </div>
+        <p>{{item.ProductName|textOverflowEllipsis:[16]}}
+          <span>￥{{item.MiniRetailPrice|toFixed:2}}元起</span>
+        </p>
+      </div>
+    </ion-scroll>
+
+  </div>
+
+  <div class="contentProduct" *ngIf='productList.length>0'>
+    <ion-list>
+      <ion-list-header>
+        <img src='assets/img/ui/all.png' class="titleImg" item-start>
+        <img src='assets/img/ui/more.png' class="moreImg" item-end (click)='productBtnClick()'>
+      </ion-list-header>
+
+      <ion-item *ngFor='let item of productList' (click)='goProductDetail(item.ProductType,item.ProductId)'>
+        <ion-thumbnail item-start [ngStyle]="{'background-image':'url('+item.CoverImage+')'}">
+        </ion-thumbnail>
+        <h2>{{item.ProductName|textOverflowEllipsis:[42]}}</h2>
+        <span ion-button clear item-end class="listPrice">￥{{item.MiniRetailPrice|toFixed:2}}元起</span>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="isLoad">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+  <p class="notmoredateload" *ngIf="!isLoad">没有更多数据了</p>
+
+</ion-content>

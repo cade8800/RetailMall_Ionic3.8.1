@@ -1,0 +1,84 @@
+<ion-header>
+  <ion-navbar color="1DC08C">
+    <ion-title>{{title}}发票信息</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+
+  <ion-list>
+
+    <ion-grid class="radiogroup">
+      <ion-row radio-group [(ngModel)]="invoice.Type">
+        <ion-col col-auto>
+          <ion-label>发票种类</ion-label>
+        </ion-col>
+        <ion-col>
+          <ion-radio color="titleStyle" value="1"></ion-radio>
+        </ion-col>
+        <ion-col>
+          <ion-label>普通发票</ion-label>
+        </ion-col>
+        <ion-col>
+          <ion-radio value="2" [disabled]="invoice.Subject==1"></ion-radio>
+        </ion-col>
+        <ion-col>
+          <ion-label>专用发票</ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row radio-group [(ngModel)]="invoice.Subject">
+        <ion-col col-auto>
+          <ion-label>发票类型</ion-label>
+        </ion-col>
+        <ion-col>
+          <ion-radio value="2"></ion-radio>
+        </ion-col>
+        <ion-col>
+          <ion-label>企业发票</ion-label>
+        </ion-col>
+        <ion-col>
+          <ion-radio value="1" [disabled]="invoice.Type==2"></ion-radio>
+        </ion-col>
+        <ion-col>
+          <ion-label>个人发票</ion-label>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-item *ngIf='(invoice.Type==2&&invoice.Subject==2)||(invoice.Type==1&&invoice.Subject==1)||(invoice.Type==1&&invoice.Subject==2)'>
+      <ion-label>发票抬头</ion-label>
+      <ion-input [(ngModel)]='invoice.Title' type="text" class="usinvoiceedit" placeholder="请输入发票抬头"></ion-input>
+    </ion-item>
+    <ion-item *ngIf='(invoice.Type==2&&invoice.Subject==2)||(invoice.Type==1&&invoice.Subject==2)'>
+      <ion-label>纳税人识别号</ion-label>
+      <ion-input [(ngModel)]='invoice.TaxpayerId' type="text" class="usinvoiceedit" placeholder="请输入纳税人识别号"></ion-input>
+    </ion-item>
+    <ion-item *ngIf='invoice.Type==2&&invoice.Subject==2'>
+      <ion-label>电话</ion-label>
+      <ion-input [(ngModel)]='invoice.PhoneNumber' type="text" class="usinvoiceedit" placeholder="请输入电话"></ion-input>
+    </ion-item>
+    <ion-item *ngIf='invoice.Type==2&&invoice.Subject==2'>
+      <ion-label>地址</ion-label>
+      <ion-input [(ngModel)]='invoice.Address' type="text" class="usinvoiceedit" placeholder="请输入地址"></ion-input>
+    </ion-item>
+    <ion-item *ngIf='invoice.Type==2&&invoice.Subject==2'>
+      <ion-label>开户行</ion-label>
+      <ion-input [(ngModel)]='invoice.BankName' type="text" class="usinvoiceedit" placeholder="请输入开户行"></ion-input>
+    </ion-item>
+    <ion-item *ngIf='invoice.Type==2&&invoice.Subject==2'>
+      <ion-label>账号</ion-label>
+      <ion-input [(ngModel)]='invoice.BankAccount' type="text" class="usinvoiceedit" placeholder="请输入账号"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>设为默认发票信息</ion-label>
+      <ion-toggle color="1DC08C" [(ngModel)]="invoice.IsDefault"></ion-toggle>
+    </ion-item>
+  </ion-list>
+
+</ion-content>
+
+<ion-footer class="mainFooter">
+  <button ion-button block color='FF8A00' (click)='complete()'>完成</button>
+</ion-footer>

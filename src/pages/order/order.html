@@ -1,0 +1,143 @@
+<ion-header>
+
+  <!-- <ion-navbar color="1DC08C">
+    <ion-title>填写订单</ion-title>
+  </ion-navbar> -->
+
+  <ion-toolbar color="1DC08C">
+    <ion-buttons start>
+      <button ion-button icon-only (click)='backProductDetail()'>
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+
+    <ion-title>填写订单</ion-title>
+
+  </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <div class="orderQuantity">
+
+    <ion-grid>
+
+      <ion-row *ngFor='let item of input.OrderProductListInput[0].OrderProductDateListInput[0].OrderProductDateQuoteListInput'>
+        <ion-col class="left">{{item.QuoteName}}
+          <span>
+            {{input.RetailMallOrderInfoInput.OrderType==8?"均":""}} {{item.price}}元
+            <!-- {{item.currency}} -->
+          </span>
+          <small *ngIf='input.RetailMallOrderInfoInput.OrderType==8'>×{{input.bookTimeInfo.dateDiff}}晚</small>
+          <small>{{item.remainingSeats}}</small>
+        </ion-col>
+        <ion-col class="right" col-auto>
+          <counter-input [(ngModel)]='item.Quantity' (total)='getTotal()'></counter-input>
+        </ion-col>
+      </ion-row>
+
+    </ion-grid>
+
+  </div>
+
+  <div class="orderInfo">
+
+    <ion-list class="contact">
+      <ion-list-header (click)='isShowContactDetail=!isShowContactDetail'>
+        <img src="assets/img/ui/contact.png">联系人
+        <span *ngIf='!isShowContactDetail'>{{input.RetailMallOrderInfoInput.ContactName}}</span>
+        <ion-icon *ngIf='!isShowContactDetail' name="ios-arrow-down-outline"></ion-icon>
+        <ion-icon *ngIf='isShowContactDetail' name="ios-arrow-up-outline"></ion-icon>
+      </ion-list-header>
+      <ion-item *ngIf='isShowContactDetail'>
+        <ion-label>姓名</ion-label>
+        <ion-input type="text" [(ngModel)]='input.RetailMallOrderInfoInput.ContactName'></ion-input>
+      </ion-item>
+      <ion-item *ngIf='isShowContactDetail'>
+        <ion-label>手机</ion-label>
+        <ion-input type="text" [(ngModel)]='input.RetailMallOrderInfoInput.ContactPhone'></ion-input>
+      </ion-item>
+      <ion-item *ngIf='isShowContactDetail'>
+        <ion-label>邮件</ion-label>
+        <ion-input type="text" [(ngModel)]='input.RetailMallOrderInfoInput.ContactEmail'></ion-input>
+      </ion-item>
+    </ion-list>
+
+    <ion-list class="contact">
+      <ion-list-header>订单备注</ion-list-header>
+      <ion-item>
+        <ion-textarea [(ngModel)]='input.RetailMallOrderInfoInput.BuyerRemark'></ion-textarea>
+      </ion-item>
+    </ion-list>
+
+    <ion-list class="vistor">
+      <ion-list-header>
+        <img src="assets/img/ui/vistor.png">游客信息
+        <button ion-button color="FFFFFF" (click)='goVisitorPage()'>编辑游客信息</button>
+      </ion-list-header>
+      <ion-item *ngFor="let item of input.OrderVisitorListInput">
+        <ion-avatar item-start>
+          <img src="assets/img/ui/vistorinfo.png">
+        </ion-avatar>
+        <h2>{{item.VisitorName}}</h2>
+        <p>
+          <span>{{item.CredentialTypeCn}}</span>{{item.CredentialNumber}}</p>
+        <ion-note item-end>{{item.VisitorType|visitorType}}</ion-note>
+      </ion-item>
+    </ion-list>
+
+    <ion-list class="contact">
+      <ion-list-header>
+        <ion-label>开票</ion-label>
+        <ion-toggle (ionChange)='setDefaultInvoice()' color="1DC08C" [(ngModel)]="input.RetailMallOrderInfoInput.Invoice.IsActive"></ion-toggle>
+      </ion-list-header>
+      <ion-item-sliding *ngIf='input.RetailMallOrderInfoInput.Invoice.IsActive'>
+        <button ion-item (click)='goInvoice()'>
+          <p *ngIf='!input.RetailMallOrderInfoInput.Invoice.Title'>选择</p>
+          <div *ngIf='input.RetailMallOrderInfoInput.Invoice.Title'>
+            <p>发票抬头：{{input.RetailMallOrderInfoInput.Invoice.Title}}</p>
+            <p *ngIf='input.RetailMallOrderInfoInput.Invoice.TaxpayerId'>
+              税务号：{{input.RetailMallOrderInfoInput.Invoice.TaxpayerId}}
+            </p>
+          </div>
+          <ion-note item-end></ion-note>
+        </button>
+      </ion-item-sliding>
+    </ion-list>
+
+    <ion-list class="contact">
+      <ion-list-header>
+        <ion-label>邮寄</ion-label>
+        <ion-toggle (ionChange)='setDefaultShipping()' color="1DC08C" [(ngModel)]="input.RetailMallOrderInfoInput.Shipping.IsActive"></ion-toggle>
+      </ion-list-header>
+      <ion-item-sliding *ngIf='input.RetailMallOrderInfoInput.Shipping.IsActive'>
+        <button ion-item (click)='goShipping()'>
+          <p *ngIf='!input.RetailMallOrderInfoInput.Shipping.ReceiverName'>选择</p>
+          <div *ngIf='input.RetailMallOrderInfoInput.Shipping.ReceiverName'>
+            <p>{{input.RetailMallOrderInfoInput.Shipping.ReceiverName}},{{input.RetailMallOrderInfoInput.Shipping.PhoneNumber}}</p>
+            <p>{{input.RetailMallOrderInfoInput.Shipping.Areas+','+ input.RetailMallOrderInfoInput.Shipping.Street}}</p>
+          </div>
+          <ion-note item-end></ion-note>
+        </button>
+      </ion-item-sliding>
+    </ion-list>
+
+  </div>
+
+</ion-content>
+
+<ion-footer class="mainFooter">
+  <ion-grid>
+    <ion-row>
+      <button ion-button full col-5 class="col" color='FFFFFF'>
+        <small>总额:</small>
+        <span class="price">{{total|toFixed:2}}
+          <small>元</small>
+        </span>
+      </button>
+      <button ion-button full class="col" color='FF8A00' (click)='submitOrder()'>提交订单</button>
+    </ion-row>
+  </ion-grid>
+</ion-footer>

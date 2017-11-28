@@ -1,0 +1,200 @@
+page-order-detail {
+  .content {
+    .scroll-content {
+      padding: 8px 10px 10px 10px;
+      .productInfo {
+        background-color: #fff;
+        border: 1px solid #E0E0E0;
+        border-radius: 4px;
+        position: relative;
+        margin-bottom: 8px;
+        .top {
+          height: 90px;
+          padding-left: 90px;
+          padding-top: 10px;
+          padding-right: 20px;
+          color: #3F3F3F;
+          overflow: hidden;
+          .imgdiv {
+            width: 75px;
+            height: 75px;
+            overflow: hidden;
+            background-color: #ddd;
+            position: absolute;
+            left: 8px;
+            top: 8px;
+            -webkit-align-self: flex-start;
+            align-self: flex-start;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            -webkit-background-clip: padding-box!important;
+            background-clip: padding-box!important;
+          }
+          .rightimg {
+            position: absolute;
+            height: 20px;
+            right: 10px;
+            top: 35px;
+          }
+        }
+      }
+      .orderitem {
+        background-color: #fff;
+        border: 1px solid #E0E0E0;
+        border-radius: 4px;
+        position: relative;
+        margin-bottom: 8px;
+        color: #838383;
+        font-size: 13px;
+        .title {
+          color: #616161;
+          font-size: 14px;
+        }
+        .state2CC493 {
+          text-align: left;
+          color: #2CC493;
+          font-size: 14px;
+        }
+        .stateEB4579 {
+          text-align: left;
+          color: #EB4579;
+          font-size: 14px;
+        }
+        .price {
+          color: #FF8A00;
+          font-weight: 600;
+        }
+        .top {
+          border-bottom: 1px dashed #D8D8D8;
+          padding: 14px 12px;
+        }
+        .bottom {
+          .text {
+            padding-left: 10px;
+          }
+          .grid {
+            .row {
+              .col:first-child {
+                text-align: center;
+              }
+              .col:last-child {
+                text-align: right;
+              }
+            }
+          }
+          .grid.fromcol {
+            .row {
+              .col:first-child {
+                text-align: right;
+              }
+              .col:last-child {
+                text-align: left;
+              }
+            }
+          }
+        }
+      }
+      .vistor {
+        border: 1px solid #E6E6E6;
+        border-radius: 4px;
+        font-size: 13px;
+        margin: 0px 0px 8px 0px;
+        .list-header.item {
+          background-color: #fff;
+          border-bottom: 1px dashed #E3E3E3;
+          border-top-width: 0px;
+          margin-bottom: 0px;
+          .input-wrapper {
+            .label {
+              color: #616161;
+              font-size: 14px;
+            }
+          }
+        }
+        .item {
+          ion-avatar {
+            border-right: 1px solid #EB487A;
+            padding-right: 20px;
+            img {
+              border-radius: 0px;
+              height: auto;
+              width: 30px;
+              position: relative;
+              top: 0.5rem;
+            }
+          }
+          .input-wrapper {
+            .label {
+              h2 {
+                color: #383838;
+                margin-bottom: 6px;
+              }
+              p {
+                color: #474747;
+                font-size: 12px;
+                span {
+                  color: #808080;
+                  margin-right: 5px;
+                }
+              }
+            }
+          }
+          .note {
+            color: #717171;
+            font-size: 15px;
+          }
+        }
+        .item:last-child {
+          border-bottom-width: 0px;
+        }
+      }
+    }
+  }
+  .mainFooter {
+    background-color: #fff;
+    .grid {
+      padding: 0px;
+      .row {
+        .col {
+          text-align: center;
+          padding: 0px;
+          margin: 0px;
+          img {
+            max-width: 20px;
+            max-height: 20px;
+          }
+          p {
+            padding: 0px;
+            margin: 0px;
+            font-size: 13px;
+          }
+          .button {
+            padding: 0px;
+            margin: 0px;
+            height: 100%;
+          }
+          a {
+            color: #666666;
+            text-decoration: none;
+            // position: absolute;
+            left: 0px;
+            right: 0px;
+          }
+        }
+        .padding3 {
+          padding: 3px;
+          color: #666666;
+        }
+        .rightborder {
+          border-right: 0.5px solid #DADADA;
+        }
+        [col-2] {
+          width: 20%;
+          max-width: 20%;
+          flex: 0 0 20%;
+        }
+      }
+    }
+  }
+}

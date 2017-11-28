@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-navbar color="1DC08C">
+    <ion-title>{{title}}常用游客</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list>
+    <ion-item>
+      <ion-label>姓名</ion-label>
+      <ion-input [(ngModel)]='visitor.VisitorName' type="text" value=""></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>性别</ion-label>
+      <ion-select [(ngModel)]='visitor.VisitorGender' interface="popover">
+        <!-- <ion-option value="0">未知</ion-option> -->
+        <ion-option value="1">男</ion-option>
+        <ion-option value="2">女</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>手机</ion-label>
+      <ion-input [(ngModel)]='visitor.VisitorPhone' type="text" value=""></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>邮箱</ion-label>
+      <ion-input [(ngModel)]='visitor.VisitorEmail' type="text" value=""></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>游客类型</ion-label>
+      <ion-select [(ngModel)]='visitor.VisitorType' interface="popover">
+        <ion-option value="1">成人</ion-option>
+        <ion-option value="2">儿童</ion-option>
+        <ion-option value="3">老人</ion-option>
+        <ion-option value="4">婴儿</ion-option>
+        <ion-option value="5">领队/全陪</ion-option>
+        <ion-option value="6">司陪</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>证件类型</ion-label>
+      <ion-select [(ngModel)]='visitor.CredentialType' interface="popover">
+        <ion-option value="1">身份证</ion-option>
+        <ion-option value="2">护照</ion-option>
+        <ion-option value="4">台胞证</ion-option>
+        <ion-option value="8">军官证</ion-option>
+        <ion-option value="16">其它证件</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>证件号码</ion-label>
+      <ion-input [(ngModel)]='visitor.CredentialNumber' type="text" value=""></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>出生日期</ion-label>
+      <ion-datetime displayFormat="YYYY-MM-DD" cancelText='取消' doneText='完成' [(ngModel)]="visitor.Birthday"></ion-datetime>
+    </ion-item>
+  </ion-list>
+
+</ion-content>
+
+<ion-footer class="mainFooter">
+  <ion-grid>
+    <ion-row>
+      <button ion-button full class="col" color='FF8A00' (click)='saveVisitor()'>确定</button>
+    </ion-row>
+  </ion-grid>
+</ion-footer>

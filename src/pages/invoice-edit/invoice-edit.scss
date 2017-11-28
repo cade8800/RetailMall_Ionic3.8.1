@@ -1,0 +1,49 @@
+page-invoice-edit {
+  .content {
+    .scroll-content {
+      .list {
+        .radiogroup {
+          background-color: #fff;
+          .row {
+            border-bottom: 1px solid #ddd;
+            padding: 8px;
+            margin-left: 8px;
+            .col {
+              text-align: right;
+              .radio {
+                .radio-icon {
+                  border: 1px solid #1DC08C;
+                  padding: 12px;
+                  border-radius: 50%;
+                  margin-top: 8px;
+                  .radio-inner {
+                    left: 10px;
+                  }
+                }
+                .radio-checked {
+                  background-color: #1DC08C;
+                  .radio-inner {
+                    border-color: #fff;
+                  }
+                }
+              }
+            }
+          }
+        }
+        .item {
+          font-size: 12px;
+          .item-inner {
+            .label {
+              color: #161616;
+              width: 72px;
+            }
+          }
+        }
+      }
+    }
+  }
+  .mainFooter {
+    background-color: #F5F6F8;
+    padding: 3px 12px;
+  }
+}

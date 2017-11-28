@@ -1,0 +1,67 @@
+<ion-content>
+
+  <div class="homeMain">
+
+    <ion-toolbar>
+      <ion-buttons start>
+        <button ion-button icon-only icon-right color='light' (click)='goBack()'>
+          <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+        </button>
+      </ion-buttons>
+      <ion-title color='light'>我的</ion-title>
+      <ion-buttons end>
+        <a [href]="userInfo.MeUrl" ion-button icon-only color='light'>设置</a>
+      </ion-buttons>
+    </ion-toolbar>
+
+    <div class="agencyHomeInfo">
+      <div class="avatar" [ngStyle]="{'background-image':'url('+userInfo.ProfileImage+')'}"> </div>
+      <p>{{userInfo.Name}}</p>
+      <ion-grid>
+        <ion-row>
+          <ion-col class="borderright">
+            <p>
+              <img class="img22" src="assets/img/ui/wechat.png">
+            </p>
+            <span>{{userInfo.WeChat}}</span>
+          </ion-col>
+          <ion-col class="borderright">
+            <p>
+              <img class="img17" src="assets/img/ui/phone.png">
+            </p>
+            <span>{{userInfo.PhoneNumber}}</span>
+          </ion-col>
+          <ion-col>
+            <p>
+              <img class="img17" src="assets/img/ui/qq.png">
+            </p>
+            <span>{{userInfo.QQ}}</span>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+
+  </div>
+
+  <div class="cardList">
+
+    <ion-card>
+      <ion-list>
+        <button ion-item>
+          <img src="assets/img/ui/amount.png" item-start> 账户余额
+          <strong>￥{{userInfo.AccountBalance}}元</strong>
+        </button>
+      </ion-list>
+    </ion-card>
+
+    <ion-card (click)='goMyOrder()'>
+      <ion-list>
+        <button ion-item>
+          <img src="assets/img/ui/order.png" item-start> 订单详情
+        </button>
+      </ion-list>
+    </ion-card>
+
+  </div>
+
+</ion-content>

@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar color="1DC08C">
+    <ion-title>发票信息</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)='add()'>
+        添加
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list>
+
+    <ion-item-sliding *ngFor='let item of invoiceList'>
+      <button ion-item (click)='choice(item)'>
+        <p>{{item.Subject==1?'个人':'公司'}}：{{item.Title}}</p>
+        <!-- <p>{{item.Type==2?'专用发票':'普通发票'}}</p> -->
+        <ion-note item-end></ion-note>
+      </button>
+      <ion-item-options>
+        <button ion-button color="secondary" (click)="edit(item)">编辑</button>
+        <button ion-button color="danger" (click)="delete(item)">删除</button>
+      </ion-item-options>
+    </ion-item-sliding>
+
+  </ion-list>
+
+
+</ion-content>

@@ -1,0 +1,81 @@
+<ion-content>
+
+  <img src='assets/img/ui/fixgoback.png' class="mainBackBtn" (click)='navCtrl.pop()'>
+  <img src='assets/img/ui/share_detail.png' class="mainShareBtn" (click)="uutShare()">
+
+  <ion-slides pager="true" class="mainSlides">
+
+    <ion-slide *ngFor='let item of info.Media.ImageInfoList' [ngStyle]="{'background-image':'url('+item.path+')'}">
+      <!-- <img [src]="item.path"> -->
+    </ion-slide>
+
+  </ion-slides>
+
+  <div class="mainContent">
+
+    <div class="mainTitle">
+      <span class="title">{{info.HotelName}}</span>
+      <p>{{info.HotelLevel}}
+        <span class="price">￥{{info.MiniRetailPrice|toFixed:2}}元起</span>
+      </p>
+    </div>
+
+    <div class="mainTabs">
+
+
+      <ion-segment [(ngModel)]="pet" color='26C291'>
+        <ion-segment-button value="facilities">
+          酒店设施
+        </ion-segment-button>
+        <ion-segment-button value="introduction">
+          酒店简介
+        </ion-segment-button>
+        <ion-segment-button value="instructions">
+          预订须知
+        </ion-segment-button>
+        <ion-segment-button value="service">
+          设施服务
+        </ion-segment-button>
+      </ion-segment>
+      <div [ngSwitch]="pet" class="tabContent">
+        <div *ngSwitchCase="'facilities'" [innerHtml]='info.HotelFacilities'>
+        </div>
+        <div *ngSwitchCase="'introduction'">
+          <strong *ngIf='info.HotelBaseInfo'>基本信息</strong>
+          <p *ngIf='info.HotelBaseInfo' [innerHtml]='info.HotelBaseInfo'></p>
+          <strong *ngIf='info.HotelCancelPolicy'>取消政策</strong>
+          <p *ngIf='info.HotelCancelPolicy' [innerHtml]='info.HotelCancelPolicy'></p>
+          <strong *ngIf='info.HotelCheckIn'>入住手续</strong>
+          <p *ngIf='info.HotelCheckIn' [innerHtml]='info.HotelCheckIn'></p>
+        </div>
+        <div *ngSwitchCase="'instructions'" [innerHtml]='info.BookingNote'>
+        </div>
+        <div *ngSwitchCase="'service'">
+          <strong *ngIf='info.HouseFacility'>房间设施</strong>
+          <p *ngIf='info.HouseFacility' [innerHtml]='info.HouseFacility'></p>
+          <strong *ngIf='info.ParkingService'>停车服务</strong>
+          <p *ngIf='info.ParkingService' [innerHtml]='info.ParkingService'></p>
+          <strong *ngIf='info.RepastFacility'>餐饮设施</strong>
+          <p *ngIf='info.RepastFacility' [innerHtml]='info.RepastFacility'></p>
+          <strong *ngIf='info.Entertainment'>休闲娱乐</strong>
+          <p *ngIf='info.Entertainment' [innerHtml]='info.Entertainment'></p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</ion-content>
+
+
+<ion-footer class="mainFooter">
+  <ion-grid>
+    <ion-row>
+      <a [href]="agencyTel" ion-button full col-5 class="col" color='FFFFFF'>
+        <img src="assets/img/ui/call.png"> 电话联系
+      </a>
+      <button ion-button full class="col" color='1DC08C' (click)='booking()'>在线预订</button>
+    </ion-row>
+  </ion-grid>
+</ion-footer>

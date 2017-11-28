@@ -1,0 +1,92 @@
+page-order-list {
+  .content {
+    .scroll-content {
+      padding: 0px 10px 10px 10px;
+      .operatingblock {
+        background-color: #fff;
+        text-align: center;
+        border: 1px solid #E0E0E0;
+        margin-bottom: 8px;
+        color: #828282;
+        .row {
+          .col:first-child {
+            border-right: 1px solid #E0E0E0;
+          }
+        }
+      }
+      .orderitem {
+        background-color: #fff;
+        border: 1px solid #E0E0E0;
+        border-radius: 4px;
+        position: relative;
+        margin-bottom: 8px;
+        .top {
+          border-bottom: 1px dashed #D8D8D8;
+          height: 90px;
+          padding-left: 90px;
+          padding-top: 10px;
+          padding-right: 4px;
+          color: #313131;
+          overflow: hidden;
+          .imgdiv {
+            width: 75px;
+            height: 75px;
+            overflow: hidden;
+            background-color: #ddd;
+            position: absolute;
+            left: 8px;
+            top: 8px;
+            -webkit-align-self: flex-start;
+            align-self: flex-start;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            -webkit-background-clip: padding-box!important;
+            background-clip: padding-box!important;
+          }
+        }
+        .bottom {
+          .grid {
+            .row {
+              .date {
+                padding-right: 0px;
+                color: #969696;
+                text-align: left;
+              }
+              .visitor {
+                padding-left: 0px;
+                padding-right: 0px;
+                color: #969696;
+              }
+              .code {
+                padding-right: 0px;
+                color: #414141;
+                text-align: right;
+              }
+              .state2CC493 {
+                text-align: left;
+                color: #2CC493;
+              }
+              .stateEB4579 {
+                text-align: left;
+                color: #EB4579;
+              }
+              .price {
+                text-align: right;
+                color: #FF8A00;
+                font-weight: 600;
+              }
+            }
+          }
+        }
+      }
+      .notmoredateload {
+        margin: 0px;
+        text-align: center;
+        padding: 0px;
+        color: #CBCBCB;
+        font-size: 12px;
+      }
+    }
+  }
+}

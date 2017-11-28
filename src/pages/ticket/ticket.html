@@ -1,0 +1,55 @@
+<ion-content>
+
+  <img src='assets/img/ui/fixgoback.png' class="mainBackBtn" (click)='navCtrl.pop()'>
+  <img src='assets/img/ui/share_detail.png' class="mainShareBtn" (click)="uutShare()">
+
+  <ion-slides pager="true" class="mainSlides">
+
+    <ion-slide *ngFor='let item of info.Media.ImageInfoList' [ngStyle]="{'background-image':'url('+item.path+')'}">
+      <!-- <img [src]="item.path"> -->
+    </ion-slide>
+
+  </ion-slides>
+
+  <div class="mainContent">
+
+    <div class="mainTitle">
+      <span class="title">{{info.TicketName}}</span>
+      <p>{{info.TicketType}}
+        <span class="price">￥{{info.MiniRetailPrice|toFixed:2}}元起</span>
+      </p>
+    </div>
+
+    <div class="mainTabs">
+
+
+      <ion-segment [(ngModel)]="pet" color='26C291'>
+        <ion-segment-button value="recommend">
+          产品推荐
+        </ion-segment-button>
+        <ion-segment-button value="describe">
+          门票描述
+        </ion-segment-button>
+      </ion-segment>
+      <div [ngSwitch]="pet" class="tabContent">
+        <div *ngSwitchCase="'recommend'" [innerHtml]='info.ProductRecommend'> </div>
+        <div *ngSwitchCase="'describe'" [innerHtml]='info.TicketDescription'> </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</ion-content>
+
+
+<ion-footer class="mainFooter">
+  <ion-grid>
+    <ion-row>
+      <a [href]="agencyTel" ion-button full col-5 class="col" color='FFFFFF'>
+        <img src="assets/img/ui/call.png"> 电话联系
+      </a>
+      <button ion-button full class="col" color='1DC08C' (click)='booking()'>在线预订</button>
+    </ion-row>
+  </ion-grid>
+</ion-footer>

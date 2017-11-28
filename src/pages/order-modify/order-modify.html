@@ -1,0 +1,84 @@
+<ion-header>
+  <ion-navbar color="1DC08C">
+    <ion-title>修改订单</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+
+  <div class="orderInfo">
+
+    <ion-list class="contact">
+      <ion-list-header>订单备注</ion-list-header>
+      <ion-item>
+        <ion-textarea [(ngModel)]='order.BuyerRemark'></ion-textarea>
+      </ion-item>
+    </ion-list>
+
+    <ion-list class="vistor">
+      <ion-list-header>
+        <img src="assets/img/ui/vistor.png">游客信息
+        <button ion-button color="FFFFFF" (click)='goVisitorPage()'>编辑游客信息</button>
+      </ion-list-header>
+      <ion-item *ngFor="let item of order.VisitorList">
+        <ion-avatar item-start>
+          <img src="assets/img/ui/vistorinfo.png">
+        </ion-avatar>
+        <h2>{{item.VisitorName}}</h2>
+        <p>
+          <span>{{item.CredentialTypeCn}}</span>{{item.CredentialNumber}}</p>
+        <ion-note item-end>{{item.VisitorType|visitorType}}</ion-note>
+      </ion-item>
+    </ion-list>
+
+    <ion-list class="contact">
+      <ion-list-header>
+        <ion-label>是否需要开票</ion-label>
+        <ion-toggle color="1DC08C" [(ngModel)]="order.Invoice.IsActive"></ion-toggle>
+      </ion-list-header>
+      <ion-item-sliding *ngIf='order.Invoice.IsActive'>
+        <button ion-item (click)='goInvoice()'>
+          <p *ngIf='!order.Invoice.Title'>
+            未设置开票信息，点击前往新增
+          </p>
+          <div *ngIf='order.Invoice.Title'>
+            <p>发票抬头：{{order.Invoice.Title}}</p>
+            <p *ngIf='order.Invoice.TaxpayerId'>
+              税务号：{{order.Invoice.TaxpayerId}}
+            </p>
+          </div>
+          <ion-note item-end></ion-note>
+        </button>
+      </ion-item-sliding>
+    </ion-list>
+
+    <ion-list class="contact">
+      <ion-list-header>
+        <ion-label>是否需要配送</ion-label>
+        <ion-toggle color="1DC08C" [(ngModel)]="order.Shipping.IsActive"></ion-toggle>
+      </ion-list-header>
+      <ion-item-sliding *ngIf='order.Shipping.IsActive'>
+        <button ion-item (click)='goShipping()'>
+          <p *ngIf='!order.Shipping.ReceiverName'>未设置配送信息，点击前往新增</p>
+          <div *ngIf='order.Shipping.ReceiverName'>
+            <p>{{order.Shipping.ReceiverName}},{{order.Shipping.PhoneNumber}}</p>
+            <p>{{order.Shipping.Areas+','+ order.Shipping.Street}}</p>
+          </div>
+          <ion-note item-end></ion-note>
+        </button>
+      </ion-item-sliding>
+    </ion-list>
+
+  </div>
+
+</ion-content>
+
+
+<ion-footer class="mainFooter">
+  <ion-grid>
+    <ion-row>
+      <button ion-button full class="col" color='FF8A00' (click)='saveOrder()'>保存</button>
+    </ion-row>
+  </ion-grid>
+</ion-footer>

@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-navbar color="1DC08C">
+    <ion-title>{{title}}邮寄信息</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list>
+    <ion-item>
+      <ion-label>收件人名称</ion-label>
+      <ion-input [(ngModel)]='shipping.ReceiverName' type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>联系电话</ion-label>
+      <ion-input [(ngModel)]='shipping.PhoneNumber' type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>省/市</ion-label>
+      <ion-input [(ngModel)]='shipping.Areas' type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>街道</ion-label>
+      <ion-input [(ngModel)]='shipping.Street' type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>是否默认</ion-label>
+      <ion-toggle [(ngModel)]='shipping.IsDefault'></ion-toggle>
+    </ion-item>
+  </ion-list>
+
+</ion-content>
+
+<ion-footer class="mainFooter">
+  <button ion-button block color='FF8A00' (click)='complete()'>完成</button>
+</ion-footer>

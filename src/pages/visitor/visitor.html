@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-navbar color="1DC08C">
+    <ion-title>常用游客信息</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)='addVisitor()'>
+        添加
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+
+
+  <ion-list class="vistor">
+    <ion-list-header>
+      您已选择{{checkVisitorCount}}/{{visitorList.length}}位游客
+    </ion-list-header>
+
+
+    <ion-item-sliding *ngFor="let item of visitorList">
+      <ion-item>
+        <ion-avatar item-start (click)="editVisitor(item)">
+          <img src="assets/img/ui/edit.png">
+        </ion-avatar>
+        <ion-label>
+          <h2>{{item.VisitorName}}</h2>
+          <p><small>{{item.CredentialTypeCn}}</small>{{item.CredentialNumber}}</p>
+        </ion-label>
+        <ion-checkbox color="1DC08C" [(ngModel)]="item.checked" (ionChange)="updateCucumber()" item-end></ion-checkbox>
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color='danger' (click)='deleteVisitor(item)'>
+          删除
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+
+
+
+
+  </ion-list>
+
+
+
+</ion-content>
+
+
+
+<ion-footer class="mainFooter">
+  <ion-grid>
+    <ion-row>
+      <button ion-button full class="col" color='FF8A00' (click)='submitVisitor()'>确定</button>
+    </ion-row>
+  </ion-grid>
+</ion-footer>

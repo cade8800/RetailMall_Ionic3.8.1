@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-navbar color="1DC08C">
+    <ion-title>我的订单</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-grid class="operatingblock">
+    <ion-row>
+      <ion-col (click)='orderState()'>订单状态
+        <ion-icon name="md-arrow-dropdown"></ion-icon>
+      </ion-col>
+      <ion-col (click)='orderSorting()'>订单排序
+        <ion-icon name="md-arrow-dropdown"></ion-icon>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div class="orderitem" *ngFor='let item of orderList' (click)='goOrderDetail(item.Id)'>
+    <div class="top" *ngFor='let p of item.ProductList'>
+      <div class="imgdiv" [ngStyle]="{'background-image':'url('+p.CoverImageUrl+')'}">
+        <!-- <img [src]="p.CoverImageUrl" alt='产品图片'> -->
+      </div>
+      {{p.ProductName}}
+    </div>
+    <div class="bottom">
+      <ion-grid>
+        <ion-row>
+          <ion-col class="date">{{item.MinDepartureTime|date:'yyyy-MM-dd'}}出发</ion-col>
+          <ion-col col-auto class="visitor">{{item.AdultVisitorCount}}位成人</ion-col>
+          <ion-col class="code" col-auto>编号:{{item.OrderID}}</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col [ngClass]="item.PaymentState?'state2CC493':'stateEB4579'">{{item.PaymentState|paymentState}}</ion-col>
+          <ion-col class="price">￥{{item.DealAmount|toFixed:2}}元</ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="isLoad">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+  <p class="notmoredateload" *ngIf="!isLoad">没有更多订单了</p>
+
+</ion-content>

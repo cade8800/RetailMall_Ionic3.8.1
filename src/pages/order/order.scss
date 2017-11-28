@@ -1,0 +1,155 @@
+page-order {
+  .content {
+    .orderQuantity {
+      .grid {
+        background-color: #fff;
+        .row {
+          margin: 0.5rem 0px 0.5rem;
+          .left {
+            padding-left: 1rem;
+            span {
+              color: #FF8A00;
+              margin-left: 1rem;
+            }
+            small {
+              color: #A5A5A5;
+              margin-left: 1rem;
+            }
+          }
+          .right {
+            .add {
+              float: left;
+              font-size: 25px;
+            }
+            .input {
+              float: left;
+              width: 5rem;
+              input {
+                background-color: #1DC08C;
+                color: #fff;
+                margin: 4px;
+                border-radius: 4px;
+                text-align: center;
+              }
+            }
+            .min {
+              float: left;
+              font-size: 25px;
+            }
+          }
+        }
+      }
+    }
+    .orderInfo {
+      .contact {
+        border: 1px solid #E6E6E6;
+        margin: 8px 8px 20px 8px;
+        border-radius: 4px;
+        .list-header-md {
+          margin-bottom: 0px;
+        }
+        .list-header {
+          background-color: #fff;
+          border-bottom: 1px dashed #E3E3E3;
+          .label {
+            font-size: 15px;
+            color: #606060;
+            img {
+              height: 18px;
+              margin-right: 8px;
+              float: left;
+            }
+            span {
+              margin-left: 12px;
+            }
+            .icon {
+              position: absolute;
+              right: 0.5rem;
+            }
+          }
+        }
+        .item {
+          .input-wrapper {
+            .label {
+              color: #808080;
+              font-size: 14px;
+            }
+            .input {
+              color: #555555;
+              font-size: 14px;
+            }
+          }
+        }
+      }
+      .vistor {
+        border: 1px solid #E6E6E6;
+        margin: 8px 8px 20px 8px;
+        border-radius: 4px;
+        .list-header {
+          background-color: #fff;
+          border-bottom: 1px dashed #E3E3E3;
+          .label {
+            font-size: 15px;
+            color: #606060;
+            img {
+              height: 18px;
+              margin-right: 8px;
+              float: left;
+            }
+            .button {
+              position: absolute;
+              right: 0.5rem;
+              border: 1px solid #F0F0F0;
+              bottom: 0.5rem;
+              color: #909090;
+            }
+          }
+        }
+        .item {
+          ion-avatar {
+            border-right: 1px solid #EB487A;
+            padding-right: 20px;
+            img {
+              border-radius: 0px;
+              height: auto;
+              width: 30px;
+              position: relative;
+              top: 0.5rem;
+            }
+          }
+          .input-wrapper {
+            .label {
+              color: #808080;
+              font-size: 14px;
+              h2 {
+                color: #383838;
+                font-size: 16px;
+                margin-bottom: 6px;
+              }
+              p {
+                color: #474747;
+                span {
+                  color: #808080;
+                  margin-right: 5px;
+                }
+              }
+            }
+          }
+          .note {
+            color: #717171;
+            font-size: 15px;
+          }
+        }
+      }
+    }
+  }
+  .mainFooter {
+    .grid {
+      padding: 0px;
+      .price {
+        color: #FF8A00;
+        margin-left: 5px;
+      }
+    }
+  }
+}
